@@ -45,7 +45,6 @@ namespace MyCart.Services.Services
                 Description = dto.Description,
             };
 
-            // Insert and saves data into Database
             _db.Categories.Add(category);
             await _db.SaveChangesAsync();
 
@@ -63,7 +62,6 @@ namespace MyCart.Services.Services
         {
             var response = new ServiceResponse<CategoryViewDto>();
 
-            // Check if the category exists.
             var category = await _db.Categories.FindAsync(id);
             if (category == null)
                 return null;

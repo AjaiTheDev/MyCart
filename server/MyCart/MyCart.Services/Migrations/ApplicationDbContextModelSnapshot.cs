@@ -406,7 +406,7 @@ namespace MyCart.Services.Migrations
 
                     b.Property<string>("ApplicationUserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("DeliveryAddress")
                         .IsRequired()
@@ -423,6 +423,8 @@ namespace MyCart.Services.Migrations
                         .HasColumnType("decimal(10,3)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Orders");
                 });
@@ -653,6 +655,17 @@ namespace MyCart.Services.Migrations
                     b.HasOne("MyCart.Domain.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("MyCart.Domain.Models.Order", b =>
+                {
+                    b.HasOne("MyCart.Domain.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ApplicationUser");
                 });

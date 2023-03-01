@@ -17,7 +17,7 @@ namespace MyCart.Domain.Models
         [Required]
         public string Name { get; set; }
 
-        [StringLength(100)]
+        [StringLength(2000)]
         public string Description { get; set; }
     }
 }

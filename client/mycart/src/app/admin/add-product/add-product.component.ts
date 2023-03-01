@@ -1,30 +1,32 @@
 import { Component } from '@angular/core';
+import { NgbToast } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductsService } from 'src/app/services/products.service';
 
-
 @Component({
   selector: 'app-add-product',
-  templateUrl:'./add-product.component.html',
+  templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent {
 
   constructor(
     private categoryService: CategoryService,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private toaster: ToastrService
   ) { }
 
   categories: CategoryViewDto[] = [];
 
-  model = {
-    categoryId: 0,
+  model: ProductCreateDto = {
+    categoryId: null,
     name: '',
     brand: '',
     description: '',
-    retailPrice: 0,
-    offerPrice: 0,
-    stock: 0
+    retailPrice: null,
+    offerPrice: null,
+    stock: null
   };
 
 
@@ -32,10 +34,6 @@ export class AddProductComponent {
     this.categoryService.getAll().subscribe({
       next: (result: any) => {
         this.categories = result;
-
-      },
-      error: (errors: any) => {
-        console.log(errors);
       }
     });
   }
@@ -43,17 +41,20 @@ export class AddProductComponent {
   onSubmit(productform: any) {
     this.productService.create(this.model).subscribe({
       next: (response: any) => {
+        
         if (response.isValid) {
-          alert("Product is Created");
+          this.toaster.success("Product is Created");
           productform.reset();
         } else {
-          alert("Sorry something went wrong..")
+          this.toaster.error("Product Details are not valid, check again");
         }
+
       },
       error: (errors: any) => {
         if (errors != null) {
-          alert("Something Wrong");
+          this.toaster.error("something went wrong");
         }
+
       }
     })
   }

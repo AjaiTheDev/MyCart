@@ -13,13 +13,41 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse " id="collapsibleNavId">
-            <div class="ms-auto" *ngIf="!hasToken">
-                <a class="btn btn-info me-2 text-light login-btn" [routerLink]="['/login']"
-                    routerLinkActive="router-link-active">
-                    Login</a>
-                <a class="btn btn-warning me-2 text-light register-btn" [routerLink]="['/signup']">Register</a>
+            <div class="collapse navbar-collapse " id="collapsibleNavId" *ngIf="hasToken == false">
+                <div class="ms-auto">
+                    <a class="btn btn-info me-2 text-light login-btn" [routerLink]="['/login']"
+                        routerLinkActive="router-link-active">
+                        Login</a>
+                    <a class="btn btn-warning me-2 text-light register-btn" [routerLink]="['/signup']">Register</a>
+                </div>
             </div>
-        </div>
+            <div class="collapse navbar-collapse" id="collapsibleNavId" *ngIf="hasToken == true">
+                <ul class="navbar-nav ms-auto mt-2 mt-lg-0 ">
+                    <li class="nav-item">
+                        <a class="nav-link active" [routerLink]="['/customer/home']" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" [routerLink]="['/customer/feedback']"
+                            routerLinkActive="router-link-active">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" [routerLink]="['/customer/order/view']"
+                            routerLinkActive="router-link-active">Orders</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto mt-2 mt-lg-0 ">
+                    <li class="nav-item ms-2">
+                        <a class="nav-link active" [routerLink]="['/customer/cart']"
+                            routerLinkActive="router-link-active">
+                            <fa-icon class="fs-3" [icon]="faCart"></fa-icon>
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link active" [routerLink]="['/customer/profile']">
+                            <fa-icon class="fs-3" [icon]="faCustomerProfile"></fa-icon>
+                        </a>
+                    </li>
+                </ul>
+            </div>
     </div>
 </nav>

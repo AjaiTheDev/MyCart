@@ -1,28 +1,29 @@
-<h1 class="text-center text-info my-4">Add category</h1>
-<div class="row">
-    <div class="col-md-6 offset-md-3">
-        <form class="my-4" #form="ngForm" (ngSubmit)="onSubmit(form)">
-            <div class="m-3">
-                <label for="name" class="mb-2">Name</label>
-                <input type="name" id="name" name="name" class="form-control text-center text-dark mb-2"
-                    placeholder="Category-name" minlength="2" maxlength="20" required #name="ngModel"
-                    [(ngModel)]="model.name">
-                <div class="text-danger" *ngIf="name.invalid && name.touched">
-                    <div *ngIf="name.errors?.['minlength']">Name is too short.</div>
-                    <div *ngIf="name.errors?.['required']">Name is required.</div>
-                    <div *ngIf="name.errors?.['maxlength']">Name is too long.</div>
+<div class="container-fluid">
+    <h1 class="text-center text-info my-4">Add category</h1>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form class="my-4" #form="ngForm" (ngSubmit)="onSubmit(form)">
+                <div class="m-3">
+                    <label for="name" class="mb-2">Name</label>
+                    <input type="name" id="name" name="name" class="form-control text-dark mb-2"
+                        placeholder="Category-name" minlength="2" maxlength="20" required #name="ngModel"
+                        [(ngModel)]="model.name">
+                    <div class="text-danger" *ngIf="name.invalid && name.touched">
+                        <div *ngIf="name.errors?.['required']">Name is required.</div>
+                        <div *ngIf="name.errors?.['maxlength']">Name is too long.</div>
+                    </div>
                 </div>
-            </div>
-            <div class="m-3">
-                <label for="description" class="mb-2">Description</label>
-                <textarea type="text" id="description" name="description" [(ngModel)]="model.description"
-                    #description="ngModel" class="form-control text-center text-dark mb-2" minlength="6"
-                    maxlength="2000" required>
+                <div class="m-3">
+                    <label for="description" class="mb-2">Description</label>
+                    <textarea type="text" id="description" name="description" [(ngModel)]="model.description"
+                        #description="ngModel" class="form-control text-dark mb-2" minlength="6" maxlength="2000"
+                        required>
                 </textarea>
-            </div>
-            <div class="d-flex justify-content-center align-items-center my-4">
-                <button type="submit" class="btn btn-warning" [disabled]="name.invalid">Save</button>
-            </div>
-        </form>
+                </div>
+                <div class="d-flex justify-content-center align-items-center my-4">
+                    <button type="submit" class="btn btn-warning" [disabled]="name.invalid">Save</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

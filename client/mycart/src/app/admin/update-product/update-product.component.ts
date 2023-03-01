@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class UpdateProductComponent {
   constructor(
     private services: ProductsService,
     private router: Router,
+    private toaster: ToastrService,
     private route: ActivatedRoute) {
     this.productId = route.snapshot.params['id'];
   }
@@ -45,9 +47,10 @@ export class UpdateProductComponent {
       },
       error: (errors) => {
         if (errors == 404) {
-          alert("Something went wrong");
+          this.toaster.error("Unable to fetch products at this moment", "product");
           return;
         }
+        
       }
     });
     return true;
@@ -56,10 +59,10 @@ export class UpdateProductComponent {
   onSubmit() {
     this.services.update(this.productId, this.model).subscribe({
       next: (result: any) => {
-        alert("Product updated");
+        this.toaster.success("Details updated", "Product");
       },
       error: (result: any) => {
-        alert("Updation Failed");
+        this.toaster.success("Updation failed", "Product");
       }
     });
   }

@@ -15,7 +15,7 @@ export class CartItemComponent {
   productQuantity: number = 1;
   faTrash = faTrash as IconProp;
 
-  @Output("delete") delete = new EventEmitter<number>();
+  // @Output("delete") delete = new EventEmitter<number>();
 
   constructor(private cartService: CartService) {
   }
@@ -36,10 +36,14 @@ export class CartItemComponent {
   }
 
   deleteItem(cartId: number) {
-    this.cartService.delete(cartId).subscribe({
-      next: (response: any) => {
-        window.location.reload();
-      }
-    });
+    let decision = confirm("Are you sure you want to delete it ?");
+    
+    if(decision) {
+      this.cartService.delete(cartId).subscribe({
+        next: () => {
+          window.location.reload();
+        }
+      });
+    }
   }
 }

@@ -11,7 +11,7 @@ namespace MyCart.Domain.Models
     {
         public int Id { get; set; }
 
-        [StringLength(250)]
+        [StringLength(1000)]
         public string Message { get; set; }
 
         public string UserEmail { get; set; }

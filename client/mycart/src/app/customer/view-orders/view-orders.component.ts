@@ -11,15 +11,15 @@ export class ViewOrdersComponent {
   orderProducts: OrderViewDto[] | null = null;
   notEmpty: boolean = false;
 
-  constructor(private orderService: OrderService) {}
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
     this.orderService.getForCustomers().subscribe({
       next: (response: any) => {
         this.orderProducts = response.result;
-        if(response.result != null){
+        if (response.result != null) {
           this.notEmpty = true;
-        }
+        }       
       }
     });
   }

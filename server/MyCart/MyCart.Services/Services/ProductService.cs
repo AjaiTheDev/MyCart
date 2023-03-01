@@ -172,11 +172,9 @@ namespace MyCart.Services.Services
                 .Include(m => m.Price).Where(m => m.Price.ProductId == id)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            // If the product does not exist, return back to controller.
             if (product == null)
                 return null;
 
-            // Check if the category exists.
             if (!await _db.Categories.AnyAsync(m => m.Id == dto.CategoryId))
                 result.AddError(nameof(dto.CategoryId), "Invalid category");
 
@@ -227,11 +225,7 @@ namespace MyCart.Services.Services
         public async Task<ServiceResponse<bool>> DeleteAsync(int id)
         {
             var result = new ServiceResponse<bool>();
-
-            // Select product with the given id and returns.
             var product = await _db.Products.FindAsync(id);
-
-            // Select price which is related to the given product id from price table
             var productPrice = await _db.Prices.FirstOrDefaultAsync(m => m.ProductId == product.Id);
 
             if (product == null || productPrice == null)

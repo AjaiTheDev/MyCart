@@ -39,7 +39,7 @@ namespace MyCart.Services.Services
 
         public async Task<ServiceResponse<bool>> CreateCustomerAsync(CustomerCreateDto dto)
         {
-            var response = new ServiceResponse<bool>();
+            var response = new ServiceResponse<bool>(); 
 
             var user = new ApplicationUser
             {
@@ -74,7 +74,6 @@ namespace MyCart.Services.Services
 
             _db.Customers.Add(customer);
             await _db.SaveChangesAsync();
-
 
             response.Result = true;
             return response;
@@ -143,7 +142,7 @@ namespace MyCart.Services.Services
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Name, $"{user.FullName}"),
-                 new Claim(ClaimTypes.Role, role)
+                new Claim(ClaimTypes.Role, role)
             };
 
             string issuer = _configuration["Jwt:Issuer"];

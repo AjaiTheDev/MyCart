@@ -24,7 +24,7 @@ export class CartComponent {
     this.cartService.getAll().subscribe({
       next: (response: any) => {
         this.cartItems = response.result;
-        this.cartItems?.forEach((m:any)=> {
+        this.cartItems?.forEach((m: any) => {
           this.totalAmount += m.product.price.offerPrice;
         })
       }

@@ -21,13 +21,13 @@
                     <td>{{product.name}}</td>
                     <td>{{product.description}}</td>
                     <td>{{product.category.name}}</td>
-                    <td>{{product.price.retailPrice}}</td>
-                    <td>{{product.price.offerPrice}}</td>
+                    <td>{{product.price.retailPrice | currency: 'INR'}}</td>
+                    <td>{{product.price.offerPrice | currency: 'INR'}}</td>
                     <td>{{product.stock}}</td>
                     <td><img src="assets/images/samsung.jpg" width="100" class="img-fluid"></td>
                     <td>
                         <div class="d-grid gap-1 d-md-flex justify-content-md-end">
-                            <button class="btn btn-success" (click)="edit(product.id)" >Edit</button>
+                            <button class="btn btn-success" (click)="edit(product.id)">Edit</button>
                             <button class="btn btn-danger" (click)="Delete(product.id)">
                                 <fa-icon [icon]="faTrash"></fa-icon>
                             </button>

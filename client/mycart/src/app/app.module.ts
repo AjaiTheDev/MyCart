@@ -7,6 +7,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenHelper } from 'src/Utlis/Helpers/TokenHelper';
 import { TokenInterceptor } from 'src/Utlis/Interceptors/token.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { TokenInterceptor } from 'src/Utlis/Interceptors/token.interceptor';
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [
     TokenHelper,

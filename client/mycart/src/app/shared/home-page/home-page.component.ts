@@ -15,12 +15,12 @@ export class HomePageComponent {
 
   products: ProductViewDto[] | null = [];
 
-  constructor(private productsService: ProductsService, private tokenHelper: TokenHelper) { }
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
     this.productsService.getAllForUser().subscribe({
-      next: (result: any) => {
-        this.products = result;
+      next: (response: any) => {
+        this.products = response.result;
       }
     });
   }

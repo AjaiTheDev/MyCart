@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/services/account.service';
 import { TokenHelper } from 'src/Utlis/Helpers/TokenHelper';
 
@@ -21,7 +22,7 @@ export class CustomerProfileComponent implements OnInit {
 
   constructor(private service: AccountService,
     private tokenHelper: TokenHelper,
-    private router: Router) {}
+    private router: Router) { }
 
   ngOnInit() {
     this.service.getProfile().subscribe({
@@ -42,7 +43,10 @@ export class CustomerProfileComponent implements OnInit {
   signOut() {
     this.tokenHelper.removeToken();
     if (!this.tokenHelper.hasToken()) {
-      this.router.navigate(['login']);
+      let decision = confirm("Are you sure you want to logout");
+      if (decision) {
+        this.router.navigate(['login']);
+      }
     }
   }
 }

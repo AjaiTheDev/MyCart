@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-layout.component.css']
 })
 export class AdminLayoutComponent {
-
 }

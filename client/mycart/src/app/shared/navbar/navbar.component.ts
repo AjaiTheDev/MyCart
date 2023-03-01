@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { TokenHelper } from 'src/Utlis/Helpers/TokenHelper';
+import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -17,6 +18,8 @@ import { TokenHelper } from 'src/Utlis/Helpers/TokenHelper';
 
 export class NavbarComponent {
   faShop = faShopify as IconProp;
+  faCart = faCartShopping as IconProp;
+  faCustomerProfile = faUser as IconProp;
   hasToken: boolean = false;
 
   constructor(private tokenHelper: TokenHelper) {

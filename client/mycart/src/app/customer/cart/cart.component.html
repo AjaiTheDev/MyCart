@@ -19,6 +19,6 @@
             <span class="text-success ms-2 fs-3">{{totalAmount | currency: 'INR'}}</span>
         </div>
         <button class="btn btn-warning h-25 m-2 text-center w-25" [routerLink]="['/customer/order/summary']"
-            routerLinkActive="router-link-active">Pay Now</button>
+            routerLinkActive="router-link-active" [disabled]="totalAmount <= 0">Pay Now</button>
     </div>
 </div>

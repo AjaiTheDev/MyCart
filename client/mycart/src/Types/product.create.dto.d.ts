@@ -6,11 +6,11 @@ declare interface ProductCreateDto {
 
     description: string;
 
-    categoryId: number
+    categoryId: number | null;
 
-    stock: number;
+    stock: number | null;
 
-    retailPrice: number;
+    retailPrice: number | null;
 
-    offerPrice: number;
+    offerPrice: number | null;
 }

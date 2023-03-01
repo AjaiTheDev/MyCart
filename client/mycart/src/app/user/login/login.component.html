@@ -4,24 +4,20 @@
         <form #form="ngForm" (ngSubmit)="onSubmit()">
             <div class="m-3">
                 <label for="email" class="mb-2">Email</label>
-                <input type="email" id="email" class="form-control text-center text-dark mb-2" name="email"
+                <input type="email" id="email" class="form-control text-dark mb-2" name="email"
                     placeholder="Enter Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" minlength="5"
                     maxlength="70" #email="ngModel" [(ngModel)]="model.email" required>
                 <div class="text-danger" *ngIf="email.invalid && email.touched">
-                    <div *ngIf="email.errors?.['minlength']">Email is too short.</div>
                     <div *ngIf="email.errors?.['required']">Email is required.</div>
-                    <div *ngIf="email.errors?.['maxlength']">Email is too long.</div>
                     <div *ngIf="email.errors?.['pattern']">Email is invalid.</div>
                 </div>
             </div>
             <div class="m-3">
                 <label for="password" class="mb-2">Password</label>
-                <input type="password" id="password" class="form-control text-center text-dark mb-2" name="password"
+                <input type="password" id="password" class="form-control text-dark mb-2" name="password"
                     placeholder="Enter Password" minlength="6" maxlength="25" #password="ngModel"
                     [(ngModel)]="model.password" required>
                 <div class="text-danger" *ngIf="password.invalid && password.touched">
-                    <div *ngIf="password.errors?.['minlength']">Password is too small.</div>
-                    <div *ngIf="password.errors?.['maxlength']">Password is too long.</div>
                     <div *ngIf="password.errors?.['required']">Password is required.</div>
                 </div>
             </div>

@@ -22,7 +22,6 @@ export class TokenHelper {
         if (!token) {
             return null;
         }
-
         const payload = window.atob(token.split('.')[1]);
         const parsedToken = JSON.parse(payload);
 

@@ -9,16 +9,16 @@ import { map } from 'rxjs';
 export class ProductsService {
 
   url = "https://localhost:7191/api/admin/products";
-  urlUserArea = "https://localhost:7191/api/User/productuser";
+  urlUserArea = "https://localhost:7191/api/user/productuser";
 
   constructor(private http: HttpClient) { }
 
   getAll() {
-    return this.http.get<ProductViewDto[]>(this.url).pipe(map((data: any) => data.result));
+    return this.http.get<ProductViewDto[]>(this.url);
   }
 
   getAllForUser() {
-    return this.http.get<ProductViewDto[]>(this.urlUserArea).pipe(map((data: any) => data.result));
+    return this.http.get<ProductViewDto[]>(this.urlUserArea);
   }
 
   getById(id: number) {

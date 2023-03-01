@@ -17,9 +17,9 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderItemComponent } from './order-item/order-item.component';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
+import { NavbarComponent } from "../shared/navbar/navbar.component";
 
 @NgModule({
-
     declarations: [
         CustomerLayoutComponent,
         CartComponent,
@@ -40,7 +40,8 @@ import { ViewOrdersComponent } from './view-orders/view-orders.component';
         FontAwesomeModule,
         FooterComponent,
         FormsModule,
-        HomePageComponent
+        HomePageComponent,
+        NavbarComponent
     ]
 })
 export class CustomerModule { }

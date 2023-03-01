@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { FeedbackService } from 'src/app/services/feedback.service';
 
 @Component({
@@ -16,12 +17,14 @@ export class FeedbackComponent {
 
   constructor(
     private service: FeedbackService,
-    private router: Router
+    private router: Router,
+    private toaster: ToastrService
   ) { }
 
   onSubmit() {
     this.service.Create(this.model).subscribe({
       next: (response: any) => {
+        this.toaster.success("Feedback Submitted");
         this.router.navigate(['customer/home']);
       }
     });

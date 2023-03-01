@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ProductsService } from 'src/app/services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
+import { TokenHelper } from 'src/Utlis/Helpers/TokenHelper';
 
 @Component({
   selector: 'app-product-details',
@@ -12,8 +14,9 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent {
-  
+
   productId: number;
+  hasToken: boolean = true;
 
   model = {
     categoryId: 0,
@@ -28,12 +31,14 @@ export class ProductDetailsComponent {
   cartProduct = {
     productId: 0
   }
-  
+
   constructor(private service: ProductsService,
     private cartService: CartService,
+    private tokenHelper: TokenHelper,
     private router: Router,
+    private toaster: ToastrService,
     private route: ActivatedRoute) {
-      this.productId = route.snapshot.params['id'];
+    this.productId = route.snapshot.params['id'];
   }
 
 
@@ -51,18 +56,25 @@ export class ProductDetailsComponent {
   }
 
   AddToCart() {
+    let loggedIn = this.tokenHelper.hasToken();
+    if(loggedIn){
       this.cartService.Create(this.cartProduct).subscribe({
         next: (response: any) => {
-          if(response.result){
-            alert("Product is added to your cart");
+          if (response.result) {
+            this.toaster.success("product is added to your cart");
           }
         },
-        error : (errors: any) => {
-            if(errors.status == 500){
-              alert("Product already exists in the cart");
-            } 
+        error: (errors: any) => {
+          if (errors.status == 500) {
+            this.toaster.info("Product already exists in the cart");
+          }
         }
       });
+    }else {
+      this.toaster.info("Sorry, You are not logged in");
+      this.router.navigate(['/login']);
+    }
+    
   }
 
   orderSummary() {

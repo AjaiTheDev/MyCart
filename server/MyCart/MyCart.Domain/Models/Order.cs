@@ -15,9 +15,10 @@ namespace MyCart.Domain.Models
 
         public int Id { get; set; }
 
+        public ApplicationUser ApplicationUser { get; set; }
         public string ApplicationUserId { get; set; }
 
-        [StringLength(250)]
+        [StringLength(500)]
         public string DeliveryAddress { get; set; }
 
         public PaymentStatus PaymentStatus { get; set; }
