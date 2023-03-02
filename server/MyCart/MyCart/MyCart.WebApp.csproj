@@ -25,4 +25,8 @@
     <ProjectReference Include="..\MyCart.Services\MyCart.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
 </Project>

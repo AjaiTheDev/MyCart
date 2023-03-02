@@ -24,6 +24,8 @@ namespace MyCart.Services.Dto
 
         public CategoryViewDto Category { get; set; }
 
-        public DateTime CreatedOn { get; set; } 
+        public DateTime CreatedOn { get; set; }
+
+        public string? Image { get; set; }
     }
 }

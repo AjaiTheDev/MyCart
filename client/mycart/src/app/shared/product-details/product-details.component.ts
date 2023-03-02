@@ -22,6 +22,7 @@ export class ProductDetailsComponent {
     categoryId: 0,
     name: '',
     brand: '',
+    image: '',
     description: '',
     retailPrice: 0,
     offerPrice: 0,
@@ -45,6 +46,7 @@ export class ProductDetailsComponent {
   ngOnInit(): void {
     this.service.getByIdForUser(this.productId).subscribe({
       next: (result: any) => {
+        this.model.image = result.image;
         this.cartProduct.productId = this.productId
         this.model.name = result.name;
         this.model.description = result.description;

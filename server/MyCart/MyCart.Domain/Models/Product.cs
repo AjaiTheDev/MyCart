@@ -35,5 +35,8 @@ namespace MyCart.Domain.Models
 
         public Price Price { get; set; }
 
+        [StringLength(250)]
+        public string? Image { get; set; }
+
     }
 }

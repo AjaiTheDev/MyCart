@@ -29,7 +29,7 @@ export class ProductsService {
     return this.http.get<ProductViewDto>(`${this.urlUserArea}/${id}`);
   }
 
-  create(product: ProductCreateDto) {
+  create(product: ProductCreateDto | FormData) {
     return this.http.post<ProductCreateDto>(this.url, product);
   }
 
