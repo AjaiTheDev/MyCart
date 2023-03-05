@@ -19,7 +19,7 @@ namespace MyCart.WebApp.Areas.Admin.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(ProductViewDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Create(ProductCreateDto dto)
+        public async Task<IActionResult> Create([FromForm]ProductCreateDto dto)
         {
             var result = await _services.CreateAysnc(dto);
             if (!result.IsValid)

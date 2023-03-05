@@ -24,7 +24,7 @@
                     <td>{{product.price.retailPrice | currency: 'INR'}}</td>
                     <td>{{product.price.offerPrice | currency: 'INR'}}</td>
                     <td>{{product.stock}}</td>
-                    <td><img src="assets/images/samsung.jpg" width="100" class="img-fluid"></td>
+                    <td><img src= "https://localhost:7191/uploads/{{product.image}}" width="100" class="img-fluid"></td>
                     <td>
                         <div class="d-grid gap-1 d-md-flex justify-content-md-end">
                             <button class="btn btn-success" (click)="edit(product.id)">Edit</button>

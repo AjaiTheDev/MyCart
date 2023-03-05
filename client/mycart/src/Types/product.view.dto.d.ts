@@ -15,4 +15,6 @@ declare interface ProductViewDto {
     price: PriceViewDto;
 
     category: CategoryViewDto;
+
+    image: string;
 }

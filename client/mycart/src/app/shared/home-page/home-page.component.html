@@ -11,7 +11,7 @@
                 <div class="col-md-3 col-sm-3 col-12 mb-3" *ngFor="let item of products">
                     <a [routerLink]="['/product', item.id]" routerLinkActive="router-link-active" >
                     <div class="card bg-secondary h-100">
-                        <img class="card-img-top" src="https://picsum.photos/200/" alt="Title" height="220px"
+                    <img class="card-img-top" src="https://localhost:7191/uploads/{{item.image}}" alt="Title" height="220px"
                             width="180px">
                         <div class="card-body text-light">
                             <h4 class="card-title fw-bold">{{item.name}}</h4>

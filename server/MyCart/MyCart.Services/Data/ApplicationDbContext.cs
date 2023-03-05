@@ -12,14 +12,16 @@ namespace MyCart.Services.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            :base(options)
+            : base(options)
         {
-                
+
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            this.SeedUsers(builder);
+            this.SeedUserRoles(builder);
 
             #region Seeding Roles
             var roles = new IdentityRole[]
@@ -40,8 +42,41 @@ namespace MyCart.Services.Data
                 }
             };
             builder.Entity<IdentityRole>().HasData(roles);
-        }
+
             #endregion
+        }
+
+        #region Admin Seeding
+        private void SeedUsers(ModelBuilder builder)
+        {
+            ApplicationUser user = new ApplicationUser()
+            {
+                Id = "b74ddd14-6340-4840-95c2-db12554843e5",
+                FullName = "Admin User",
+                UserName = "Admin",
+                NormalizedUserName = "ADMIN",
+                Email = "admin@gmail.com",
+                NormalizedEmail = "ADMIN@GMAIL.COM",
+                LockoutEnabled = false,
+                PhoneNumber = "1234567890"
+            };
+
+            PasswordHasher<ApplicationUser> passwordHasher = new PasswordHasher<ApplicationUser>();
+            user.PasswordHash = passwordHasher.HashPassword(user, "Admin@12345");
+            builder.Entity<ApplicationUser>().HasData(user);
+        }
+        #endregion
+
+        private void SeedUserRoles(ModelBuilder builder)
+        {
+            builder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>()
+                {
+                    RoleId = "e2a85572-7b8c-4a95-a862-c557c3b2e869",
+                    UserId = "b74ddd14-6340-4840-95c2-db12554843e5"
+                });
+        }
+
 
         public DbSet<Cart> Carts { get; set; }
 
@@ -56,7 +91,7 @@ namespace MyCart.Services.Data
         public DbSet<Feedback> Feedbacks { get; set; }
 
         public DbSet<OrderProduct> Orderproducts { get; set; }
-        
+
         public DbSet<Price> Prices { get; set; }
 
         public DbSet<Product> Products { get; set; }

@@ -1,4 +1,5 @@
-﻿using MyCart.Domain.Models;
+﻿using Microsoft.AspNetCore.Http;
+using MyCart.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,7 @@ namespace MyCart.Services.Dto
         public decimal  RetailPrice { get; set; }
 
         public decimal OfferPrice { get; set; }
+
+        public IFormFile? Image { get; set; }
     }
 }
