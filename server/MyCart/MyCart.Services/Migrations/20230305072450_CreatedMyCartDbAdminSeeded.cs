@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyCart.Services.Migrations
 {
-    public partial class MyCartDb : Migration
+    public partial class CreatedMyCartDbAdminSeeded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,7 +56,7 @@ namespace MyCart.Services.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -220,7 +220,7 @@ namespace MyCart.Services.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Message = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -242,7 +242,7 @@ namespace MyCart.Services.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    DeliveryAddress = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    DeliveryAddress = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     PaymentStatus = table.Column<int>(type: "int", nullable: false),
                     OrderTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(10,3)", nullable: false)
@@ -270,7 +270,8 @@ namespace MyCart.Services.Migrations
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -391,6 +392,16 @@ namespace MyCart.Services.Migrations
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[] { "e2a85572-7b8c-4a95-a862-c557c3b2e870", "e2a85572-7b8c-4a95-a862-c557c3b2e870", "Customer", "CUSTOMER" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "b74ddd14-6340-4840-95c2-db12554843e5", 0, "51390043-0319-4fd0-b331-6984ae82320d", "admin@gmail.com", false, "Admin User", false, null, "ADMIN@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEDGxPzsjAOeYB8fuKLyFOY2zomNcgOUExmztgwGaD6gPffddRXAB43JZL/JJfDRL1w==", "1234567890", false, "9b2fc33d-3c73-4683-807f-4d5236f099c9", false, "Admin" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "e2a85572-7b8c-4a95-a862-c557c3b2e869", "b74ddd14-6340-4840-95c2-db12554843e5" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

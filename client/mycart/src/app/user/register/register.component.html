@@ -71,7 +71,7 @@
                 </div>
                 <div class="d-grid my-3 d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary w-30"
-                        [disabled]="form.invalid || (futureDate)">REGISTER</button>
+                        [disabled]="form.invalid || (futureDate) || registerBtnDisable">REGISTER</button>
                 </div>
             </form>
         </div>

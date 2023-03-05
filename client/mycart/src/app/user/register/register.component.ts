@@ -13,6 +13,7 @@ import { TokenHelper } from 'src/Utlis/Helpers/TokenHelper';
 export class RegisterComponent {
 
   displayPasswordError: Boolean = false;
+  registerBtnDisable?: Boolean;
   status: boolean = false;
   futureDate: boolean = false;
 
@@ -34,7 +35,8 @@ export class RegisterComponent {
   }
 
   ngOnInit() {
-    this.tokenHelper.removeToken()
+    this.tokenHelper.removeToken();
+    this.registerBtnDisable = true;
   }
 
   handleDob(dob: any) {
@@ -70,10 +72,11 @@ export class RegisterComponent {
 
   handlePassword(cpassword: NgModel) {
     let confirmPassword = cpassword.value;
-    if (confirmPassword !== this.model.password) {
+    if (confirmPassword != this.model.password) {
       this.displayPasswordError = true;
     } else {
       this.displayPasswordError = false;
+      this.registerBtnDisable = false;
     }
   }
 

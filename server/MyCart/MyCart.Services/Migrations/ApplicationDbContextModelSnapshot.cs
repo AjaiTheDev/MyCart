@@ -251,14 +251,17 @@ namespace MyCart.Services.Migrations
                         {
                             Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f3f0ec8a-807d-4f7b-b434-f6271cc5c2c8",
+                            ConcurrencyStamp = "51390043-0319-4fd0-b331-6984ae82320d",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FullName = "Admin User",
                             LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@GMAIL.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDGxPzsjAOeYB8fuKLyFOY2zomNcgOUExmztgwGaD6gPffddRXAB43JZL/JJfDRL1w==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ead021e3-622c-4e4f-a4b7-e98f6dd336f4",
+                            SecurityStamp = "9b2fc33d-3c73-4683-807f-4d5236f099c9",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });

@@ -54,14 +54,15 @@ namespace MyCart.Services.Data
                 Id = "b74ddd14-6340-4840-95c2-db12554843e5",
                 FullName = "Admin User",
                 UserName = "Admin",
+                NormalizedUserName = "ADMIN",
                 Email = "admin@gmail.com",
+                NormalizedEmail = "ADMIN@GMAIL.COM",
                 LockoutEnabled = false,
                 PhoneNumber = "1234567890"
             };
 
             PasswordHasher<ApplicationUser> passwordHasher = new PasswordHasher<ApplicationUser>();
-            passwordHasher.HashPassword(user, "Admin*123");
-
+            user.PasswordHash = passwordHasher.HashPassword(user, "Admin@12345");
             builder.Entity<ApplicationUser>().HasData(user);
         }
         #endregion
